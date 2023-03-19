@@ -16,15 +16,16 @@ public class TestThrow : MonoBehaviour
     public Slider powerBar;
     
     public Vector3 direction;
+    
 
-    public float chargeRate = 10.0f; // How fast the power charges per second
-    public float maxCharge = 70.0f; // Maximum charge level
-    private float currentCharge = 20.0f; // Current charge level
+    public float chargeRate = 40.0f; // How fast the power charges per second
+    public float maxCharge = 400.0f; // Maximum charge level
+    private float currentCharge = 10.0f; // Current charge level
 
     private void Start()
     {
         powerBar.maxValue = maxCharge;
-        powerBar.minValue = 20.0f;
+        powerBar.minValue = 10.0f;
     }
 
     void Update()
@@ -36,7 +37,7 @@ public class TestThrow : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 currentCharge += chargeRate * Time.deltaTime;
-                currentCharge = Mathf.Clamp(currentCharge, 20.0f, maxCharge);
+                currentCharge = Mathf.Clamp(currentCharge, 10.0f, maxCharge);
 
                 powerBar.value = currentCharge;
             }
@@ -70,17 +71,39 @@ public class TestThrow : MonoBehaviour
     {
         GameObject newObject = Instantiate(objectToThrow, positionToThrow.transform.position, Quaternion.identity);
         Rigidbody rb = newObject.GetComponent<Rigidbody>();
+        
+        float dragCoefficient = 0.1f;
+        rb.drag = dragCoefficient * rb.velocity.magnitude;
+        
         rb.useGravity = true;
         rb.velocity = CalculateThrowVelocity(force);
         float torqueForce = force * force * 5;
         rb.AddTorque(new Vector3(0, Random.value, 0) * torqueForce); // add torque to the rigidbody
+        
+        
     }
 
     private Vector3 CalculateThrowVelocity(float force)
     {
+        /* float radians = throwAngle * Mathf.Deg2Rad;
+        Vector3 initialVelocity = new Vector3(0, Mathf.Sin(radians), Mathf.Cos(radians)) * force;
+        return Quaternion.LookRotation(direction) * initialVelocity; */
+        
         float radians = throwAngle * Mathf.Deg2Rad;
         Vector3 initialVelocity = new Vector3(0, Mathf.Sin(radians), Mathf.Cos(radians)) * force;
-        return Quaternion.LookRotation(direction) * initialVelocity;
+
+        float rho = 1.2f; // density of air
+        float C = 5f; // drag coefficient
+        float A = 0.01f; // cross-sectional area of object
+        float m = objectToThrow.GetComponent<Rigidbody>().mass;
+
+        Vector3 acceleration = -0.5f * rho * C * A * initialVelocity.magnitude * initialVelocity / m;
+
+        Vector3 velocity = initialVelocity + acceleration * Time.deltaTime;
+
+        return Quaternion.LookRotation(direction) * velocity;
     }
+    
+    
 
 }

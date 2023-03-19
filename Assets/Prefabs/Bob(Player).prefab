@@ -2732,13 +2732,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86c95e4a65afff44bd78a865711907d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwAngle: 15
+  throwAngle: 1
   objectToThrow: {fileID: 100078, guid: ed90a41b7cfee034ca54be9d3de341cd, type: 3}
   positionToThrow: {fileID: 8071277203963456412}
   powerBar: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
-  chargeRate: 10
-  maxCharge: 70
+  chargeRate: 40
+  maxCharge: 200
 --- !u!114 &8071277206024557004
 MonoBehaviour:
   m_ObjectHideFlags: 0
