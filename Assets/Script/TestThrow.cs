@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class TestThrow : MonoBehaviour
 {
-    public float throwForce = 10f;
-    public float throwAngle = 45f;
-    public float torqueForce = 5f; // added torqueForce variable
+    public float throwAngle;
+    
     public GameObject objectToThrow;
+    
     public Vector3 direction;
 
+    public float chargeRate = 10.0f; // How fast the power charges per second
+    public float maxCharge = 70.0f; // Maximum charge level
+    private float currentCharge = 20.0f; // Current charge level
+    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ThrowObject();
+        Debug.Log(currentCharge);
+        if (Input.GetKey(KeyCode.Space)) {
+            currentCharge += chargeRate * Time.deltaTime;
+            currentCharge = Mathf.Clamp(currentCharge, 20.0f, maxCharge);
         }
+        if (Input.GetKeyUp(KeyCode.Space)) {
+            ThrowObject(currentCharge);
+            currentCharge = 20f;
+        }
+        
+        
+        //ThrowObject();
+        
         
     }
 
@@ -26,21 +39,20 @@ public class TestThrow : MonoBehaviour
         return (Camera.main.ScreenToWorldPoint(mousePos) - transform.position).normalized;
     }
 
-    private void ThrowObject()
+    private void ThrowObject(float force)
     {
         GameObject newObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
         Rigidbody rb = newObject.GetComponent<Rigidbody>();
         rb.useGravity = true;
-        rb.velocity = CalculateThrowVelocity();
-        torqueForce = torqueForce * throwForce * 3;
-        rb.AddTorque(new Vector3(Random.value, Random.value, Random.value) * torqueForce); // add torque to the rigidbody
-        torqueForce = 0;
+        rb.velocity = CalculateThrowVelocity(force);
+        float torqueForce = force * force * 5;
+        rb.AddTorque(new Vector3(0, Random.value, 0) * torqueForce); // add torque to the rigidbody
     }
 
-    private Vector3 CalculateThrowVelocity()
+    private Vector3 CalculateThrowVelocity(float force)
     {
         float radians = throwAngle * Mathf.Deg2Rad;
-        Vector3 initialVelocity = new Vector3(0, Mathf.Sin(radians), Mathf.Cos(radians)) * throwForce;
+        Vector3 initialVelocity = new Vector3(0, Mathf.Sin(radians), Mathf.Cos(radians)) * force;
         return Quaternion.LookRotation(direction) * initialVelocity;
     }
 

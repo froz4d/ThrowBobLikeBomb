@@ -2829,10 +2829,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwForce: 100
-  throwAngle: 45
+  throwAngle: 15
   torqueForce: 5
   objectToThrow: {fileID: 100078, guid: ed90a41b7cfee034ca54be9d3de341cd, type: 3}
   direction: {x: 0, y: 0, z: 0}
+  chargeRate: 10
+  maxCharge: 70
 --- !u!114 &8630052622356672825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,4 +2848,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 10

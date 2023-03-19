@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerTransform = transform;
+        
         col = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
     }
@@ -29,9 +30,9 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        //float vertical = Input.GetAxis("Vertical");
         
-        Vector3 moveDirection = new Vector3(horizontal, 0.0f, vertical);
+        Vector3 moveDirection = new Vector3(horizontal, 0.0f, 0.0f);
         playerTransform.Translate(moveDirection*speed*Time.deltaTime,Space.World);
     }
 }
