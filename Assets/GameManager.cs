@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class GameManager : MonoBehaviour
         if (int.Parse(lifepoint.text) <= 0)
         {
             lifepoint.text = "gameOver";
+        }
+        
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
