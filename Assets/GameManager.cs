@@ -2,21 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI lifepoint;
+    public GameObject gameover;
 
     private void Update()
     {
         if (int.Parse(lifepoint.text) <= 0)
         {
-            lifepoint.text = "gameOver";
+            gameover.SetActive(true);
+            
+            Destroy(FindObjectOfType(typeof(PlayerController)).GameObject());
         }
         
-        if(Input.GetKey(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
         }

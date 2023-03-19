@@ -14,25 +14,35 @@ public class EnemySpawn : MonoBehaviour
     public GameObject spawnpoint3;
 
     public GameObject enemy;
+
+    private int wave = 1;
     
     // Start is called before the first frame update
     void Start()
     {
-        FirstWave();
+        Wave(wave);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!FindObjectOfType(typeof(EnemyBehavior)))
+        {
+            wave += 1;
+            Wave(wave);
+        }
     }
 
-    public void FirstWave()
+    public void Wave(int wave)
     {
-        difficulty = difficulty * 1;
-        
-        
-        for (int i = 0; i < 10*difficulty; i++)
+        difficulty = difficulty * wave;
+
+        StartCoroutine(SpawnEnemies(10 * difficulty));
+    }
+
+    IEnumerator SpawnEnemies(int numEnemies)
+    {
+        for (int i = 0; i < numEnemies; i++)
         {
             int spawnpoint = Random.Range(0, 4);
             Vector3 position = new Vector3();
@@ -53,10 +63,20 @@ public class EnemySpawn : MonoBehaviour
             {
                 position = spawnpoint3.transform.position;
             }
-            
-            
-            Instantiate(enemy, position,quaternion.identity);
-            
+
+            Instantiate(enemy, position, Quaternion.identity);
+
+            if (i <= 3)
+            {
+                yield return new WaitForSeconds(0);
+            }
+
+            else
+            {
+                yield return new WaitForSeconds(2);
+            } // delay between enemy spawns
         }
     }
+    
+    
 }

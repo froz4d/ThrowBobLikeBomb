@@ -24,7 +24,7 @@ public class EnemyBehavior : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // Update is called once per frames
     void Update()
     {
         StupidMove(speedId);
