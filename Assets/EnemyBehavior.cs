@@ -10,17 +10,18 @@ public class EnemyBehavior : MonoBehaviour
     private Transform enemyTransform;
 
     private float speedId;
+
     // Start is called before the first frame update
     void Start()
     {
         enemyTransform = transform;
-        
+
     }
 
     private void Awake()
     {
         speedId = Random.Range(1, 7);
-        
+
     }
 
     // Update is called once per frame
@@ -32,25 +33,22 @@ public class EnemyBehavior : MonoBehaviour
     void StupidMove(float speed)
     {
         Vector3 moveDirection = new Vector3(0.0f, 0.0f, -speed);
-        enemyTransform.rotation = new Quaternion(0f,180f,0f,0f);
+        enemyTransform.rotation = new Quaternion(0f, 180f, 0f, 0f);
         enemyTransform.localScale = new Vector3(speed * 10, speed * 10, speed * 10);
-        enemyTransform.Translate(moveDirection * speed * Time.deltaTime,Space.World);
+        enemyTransform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
     }
 
-    
+
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            
+
         }
+
         Destroy(this.gameObject);
-        
+
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(this.gameObject);
-    }
 }
