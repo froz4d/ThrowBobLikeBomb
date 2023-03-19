@@ -34,12 +34,13 @@ public class TestThrow : MonoBehaviour
         rb.velocity = CalculateThrowVelocity();
         torqueForce = torqueForce * throwForce * 3;
         rb.AddTorque(new Vector3(Random.value, Random.value, Random.value) * torqueForce); // add torque to the rigidbody
+        torqueForce = 0;
     }
 
     private Vector3 CalculateThrowVelocity()
     {
         float radians = throwAngle * Mathf.Deg2Rad;
-        Vector3 initialVelocity = new Vector3(Mathf.Cos(radians), Mathf.Sin(radians), 0) * throwForce;
+        Vector3 initialVelocity = new Vector3(0, Mathf.Sin(radians), Mathf.Cos(radians)) * throwForce;
         return Quaternion.LookRotation(direction) * initialVelocity;
     }
 
