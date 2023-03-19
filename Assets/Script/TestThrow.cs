@@ -18,7 +18,7 @@ public class TestThrow : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(currentCharge);
+        //Debug.Log(currentCharge);
 
         if (!FindObjectOfType(typeof(BulletBehavior)))
         {
@@ -34,7 +34,11 @@ public class TestThrow : MonoBehaviour
                 currentCharge = 20f;
             }
 
+            
         }
+        
+        
+        
         //ThrowObject();
         
         

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -35,9 +36,20 @@ public class EnemyBehavior : MonoBehaviour
         enemyTransform.localScale = new Vector3(speed * 10, speed * 10, speed * 10);
         enemyTransform.Translate(moveDirection * speed * Time.deltaTime,Space.World);
     }
+
     
 
     private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            
+        }
+        Destroy(this.gameObject);
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         Destroy(this.gameObject);
     }

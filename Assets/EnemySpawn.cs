@@ -34,7 +34,7 @@ public class EnemySpawn : MonoBehaviour
         
         for (int i = 0; i < 10*difficulty; i++)
         {
-            int spawnpoint = Random.Range(0, 3);
+            int spawnpoint = Random.Range(0, 4);
             Vector3 position = new Vector3();
 
             if (spawnpoint == 0)
