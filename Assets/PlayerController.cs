@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     
-    public float speed = 5.0f;
+    public float startspeed = 5.0f;
 
     private Transform playerTransform;
     
@@ -25,15 +25,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
+        MovePlayer(startspeed);
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            MovePlayer(startspeed * 2.5f);
+        }
     }
 
-    private void MovePlayer()
+    private void MovePlayer(float speed)
     {
         float horizontal = Input.GetAxis("Horizontal");
         //float vertical = Input.GetAxis("Vertical");
         
         Vector3 moveDirection = new Vector3(horizontal, 0.0f, 0.0f);
-        playerTransform.Translate(moveDirection*speed*Time.deltaTime,Space.World);
+        playerTransform.Translate(moveDirection * speed * Time.deltaTime,Space.World);
     }
 }
