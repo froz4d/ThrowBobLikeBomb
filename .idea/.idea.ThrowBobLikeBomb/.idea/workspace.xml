@@ -11,6 +11,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/EnemyBehavior.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EnemySpawn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -86,7 +88,7 @@
       <workItem from="1679229557318" duration="25000" />
       <workItem from="1679229627928" duration="83000" />
       <workItem from="1679229740687" duration="3000" />
-      <workItem from="1679233638573" duration="4738000" />
+      <workItem from="1679233638573" duration="6141000" />
     </task>
     <servers />
   </component>

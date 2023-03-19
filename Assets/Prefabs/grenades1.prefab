@@ -1340,6 +1340,7 @@ GameObject:
   - component: {fileID: 400078}
   - component: {fileID: 11100000}
   - component: {fileID: 3860560156264520761}
+  - component: {fileID: 6795408537110776229}
   m_Layer: 0
   m_Name: grenades1
   m_TagString: Untagged
@@ -1401,3 +1402,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &6795408537110776229
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1657445
+  m_Height: 1.7722464
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8128222, z: 0.009473841}

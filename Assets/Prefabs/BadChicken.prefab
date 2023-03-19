@@ -304,6 +304,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4303844821561524}
   - component: {fileID: 95943282229431942}
+  - component: {fileID: 4081907640304948070}
+  - component: {fileID: -2069943601438292835}
   m_Layer: 0
   m_Name: BadChicken
   m_TagString: Untagged
@@ -320,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 1311290861401530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4677390999235134}
@@ -351,6 +353,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4081907640304948070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311290861401530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3adb38f8c9696c34bb1e68aa535a34ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &-2069943601438292835
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311290861401530}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39165327, y: 0.53855497, z: 0.5165474}
+  m_Center: {x: 0.0046140137, y: 0.26511088, z: -0.0060192826}
 --- !u!1 &1325880688823160
 GameObject:
   m_ObjectHideFlags: 0

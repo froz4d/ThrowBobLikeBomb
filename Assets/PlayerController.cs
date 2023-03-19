@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
 
     private Transform playerTransform;
+    
     private Collider col;
     
     private Rigidbody rb;
