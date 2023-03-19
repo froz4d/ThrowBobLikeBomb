@@ -8,18 +8,11 @@ public class PlayerController : MonoBehaviour
     public float startspeed = 5.0f;
 
     private Transform playerTransform;
-    
-    private Collider col;
-    
-    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         playerTransform = transform;
-        
-        col = GetComponent<Collider>();
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

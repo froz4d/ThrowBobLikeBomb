@@ -35,4 +35,10 @@ public class EnemyBehavior : MonoBehaviour
         enemyTransform.localScale = new Vector3(speed * 10, speed * 10, speed * 10);
         enemyTransform.Translate(moveDirection * speed * Time.deltaTime,Space.World);
     }
+    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this.gameObject);
+    }
 }

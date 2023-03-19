@@ -7,6 +7,8 @@ public class TestThrow : MonoBehaviour
     public float throwAngle;
     
     public GameObject objectToThrow;
+
+    public GameObject positionToThrow;
     
     public Vector3 direction;
 
@@ -17,16 +19,22 @@ public class TestThrow : MonoBehaviour
     void Update()
     {
         Debug.Log(currentCharge);
-        if (Input.GetKey(KeyCode.Space)) {
-            currentCharge += chargeRate * Time.deltaTime;
-            currentCharge = Mathf.Clamp(currentCharge, 20.0f, maxCharge);
+
+        if (!FindObjectOfType(typeof(BulletBehavior)))
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                currentCharge += chargeRate * Time.deltaTime;
+                currentCharge = Mathf.Clamp(currentCharge, 20.0f, maxCharge);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                ThrowObject(currentCharge);
+                currentCharge = 20f;
+            }
+
         }
-        if (Input.GetKeyUp(KeyCode.Space)) {
-            ThrowObject(currentCharge);
-            currentCharge = 20f;
-        }
-        
-        
         //ThrowObject();
         
         
@@ -41,7 +49,7 @@ public class TestThrow : MonoBehaviour
 
     private void ThrowObject(float force)
     {
-        GameObject newObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
+        GameObject newObject = Instantiate(objectToThrow, positionToThrow.transform.position, Quaternion.identity);
         Rigidbody rb = newObject.GetComponent<Rigidbody>();
         rb.useGravity = true;
         rb.velocity = CalculateThrowVelocity(force);
