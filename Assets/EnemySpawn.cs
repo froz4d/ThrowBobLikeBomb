@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class EnemySpawn : MonoBehaviour
 
     public GameObject enemy;
 
-    private int wave = 1;
+    public int wave = 1;
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,11 @@ public class EnemySpawn : MonoBehaviour
         {
             wave += 1;
             Wave(wave);
+            if (wave == 4)
+            {
+                Debug.Log("youwin");
+                SceneManager.LoadScene(2);
+            }
         }
     }
 
